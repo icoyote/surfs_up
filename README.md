@@ -8,6 +8,24 @@ The project includes an SQLite Database that contains 2 tables: stations and mea
 
 ## Deliverable 1: Determine the Summary Statistics for June
 ![](/images/June_summaryScreenShot.png)
+
+Another way to obtain the results is:
+
+```
+month_str = "06"
+
+june_temps = []
+
+june_temps = session.query(Measurement.tobs).\
+        filter(func.strftime("%m",Measurement.date) == month_str).all()
+
+june_df = pd.DataFrame(june_temps, columns = ["June Temps"])
+
+june_df.describe()
+
+```
+by changing the string value from "06" to "12" i will reause this query for deliverable 2.
+
 ## Deliverable 2: Determine the Summary Statistics for December
 ![](/images/Dec_summaryScreenShot.png)
 
